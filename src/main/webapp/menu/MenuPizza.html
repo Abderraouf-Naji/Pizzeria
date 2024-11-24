@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Des Pizzas</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .buttons {
+         content-align:center;
+        }
+
+        header {
+            background-color:orange;
+            color: black;
+            padding: 1em;
+            text-align: center;
+        }
+
+        .menu {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1em;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .pizza-option {
+            margin-bottom: 1em;
+        }
+
+        button {
+            background-color: rgb(255, 128, 64);
+            border-radius: 5px;
+            color: black;
+            padding: 0.5em 1em;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            background-color:orange;
+            color: black;
+            padding: 1em;
+            text-align: center;
+        }
+
+        .pizza-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-evenly; /* Ajout d'un espacement égal entre les éléments */
+        }
+
+        .pizza {
+            flex: 0 0 calc(33.33% - 20px); /* Calcule la largeur pour aligner trois éléments par ligne */
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s;
+            cursor: pointer;
+            margin-bottom: 20px; /* Ajout d'un espace en bas pour l'esthétique */
+        }
+
+        .pizza input[type="checkbox"] {
+            position: absolute;
+            top: -9999px; /* Position hors de l'écran pour le masquer visuellement */
+        }
+
+        .pizza img {
+            width: 100%;
+            height: 320px;
+            display: block;
+            border-radius: 10px; /* Rendre l'image circulaire avec des bords légèrement arrondis */
+        }
+
+        .pizza label {
+            display: block;
+            font-family:Algerian;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            cursor: pointer;
+            z-index: 1; /* Assure que le label est cliquable par-dessus l'image */
+            color:black;
+             bottom: 10px; /* Ajuster la distance du bas */
+        }
+
+        .pizza:hover {
+            transform: scale(1.2);
+        }
+         /* Ajout d'une règle pour styliser l'image lorsque la checkbox est cochée */
+        .pizza input[type="checkbox"]:checked + img {
+            border: 4px solid orange; /* Couleur de bordure verte pour indiquer qu'elle est cochée */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bienvenue chez notre Pizzeria</h1>
+    </header>
+    <section class="menu">
+        <h2> Menu Des Pizza</h2>
+        <form action="http://localhost:8080/PizzeriaProject/Ajouter" method="post">
+        <table><tr><td>
+            <div class="pizza">
+                <input type="checkbox" id="margherita" name="pizza" value="Margherita">
+                <img src="src/margherita.png" alt="Margherita">
+                <label for="margherita"></label>
+                <label for="margherita">Margherita - 22TND</label>
+            </div></td>
+            <td>
+            <div class="pizza">
+                <input type="checkbox" id="pepperoni" name="pizza" value="Pepperoni">
+                <img src="src/pepperoni.jpg" alt="Pepperoni Pizza" width="100px">
+                <label for="pepperoni"></label>
+                <label for="pepperoni">Pepperoni - 18TND</label>
+            </div></td>
+            <td>
+            <div class="pizza">
+                <input type="checkbox" id="vegetarian" name="pizza" value="Vegetarian">
+                <img src="src/vegetarian.png" alt="Vegetarian">
+                <label for="vegetarian"></label>
+                <label for="vegetarian">Vegetarian - 26TND</label>
+            </div></td>
+            </tr><tr><td>
+            <div class="pizza">
+                <input type="checkbox" id="Hawaienne" name="pizza" value="Hawaienne">
+                <img src="src/Hawaïenne.png" alt="Hawaienne">
+                <label for="Hawaienne"></label>
+                <label for="Hawaienne">Hawaïenne - 20TND</label>
+            </div></td> <td>
+            <div class="pizza">
+                <input type="checkbox" id="Quatrefromages" name="pizza" value="Quatre fromages ">
+                <img src="src/Quatrefromages.png" alt="Quatre fromages Pizza" width="100px">
+                <label for="Quatre fromages"></label>
+                <label for="Quatre fromages">Quatre fromages  - 22TND</label>
+            </div></td>
+            <td>
+            <div class="pizza">
+                <input type="checkbox" id="Calzone" name="pizza" value="Calzone">
+                <img src="src/calzone.png" alt="Calzone Pizza">
+                <label for="Calzone"></label>
+                <label for="Calzone">Calzone - 18TND</label>
+            </div></td></tr></table>
+            <!-- Add more pizza options here -->
+<div class="buttons">
+            <button type="submit">Ajouter</button>
+            <a href="Affiche.jsp"><button type="button">Afficher ma commande</button></a>
+            <a href="MenuBoisson.html"><button type="button">Suivant</button></a>
+            </div>
+        </form>
+    </section>
+    <footer>
+        <p>&copy; 2023 Pizzeria</p>
+    </footer>
+     <script>
+        // Ajout d'un script pour gérer l'état de sélection lorsqu'on clique sur la pizza
+        document.addEventListener('DOMContentLoaded', function () {
+            const pizzas = document.querySelectorAll('.pizza');
+
+            pizzas.forEach(pizza => {
+                pizza.addEventListener('click', function () {
+                    const checkbox = this.querySelector('input[type="checkbox"]');
+                    checkbox.checked = !checkbox.checked;
+                });
+            });
+        });
+    </script>
+</body>
+</html>
